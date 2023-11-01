@@ -22,7 +22,7 @@
                 let ws;
 
                 const showMessage = (msj) => {
-                    messages.textContent += ` \n\n ${msj}`;
+                    messages.textContent += ` \n\n${msj}`;
                     messages.scrollTop = messages.scrollHeight;
                     messages.value = "";
                 }
@@ -38,8 +38,9 @@
                         console.log('WebSocket Connected')
                     }
 
-                    ws.onmessage = ({data}) => {
+                    ws.onmessage = async ({data}) => {
                         showMessage(data)
+                        console.log(await data.valueOf())
                     };
 
                     ws.onclose = () => {
@@ -49,9 +50,10 @@
                     sendButton.onclick = () => {
                         if(!ws) {
                             showMessage('An error ocurred with WebSocket')
+                            return ;
                         }
                         
-                        ws.send(messageBox);
+                        ws.send(messageBox.value);
                         showMessage(messageBox.value);
                     }
                 };

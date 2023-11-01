@@ -12,11 +12,15 @@ const wss = new WebSocket.Server({server});
 
 wss.on("connection",(ws)=>{
     
-    ws.on("message", (msj) =>{
-        ws.send(`Hello you sent: ${msj} ` )
+    ws.on("message", (msj, isBinary) =>{
+        wss.clients.forEach((client) => {
+            if ( client != ws && client.readyState == WebSocket.OPEN) {
+                client.send(msj, {binary: isBinary});
+            }
+        })
         console.log("received: ", msj)
     })
-    ws.send('Hi there, I am WebSocket server')
+    
 })
 
 
