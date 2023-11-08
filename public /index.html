@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>Real Time Chat</title> 
 </head>
 <body>
-    <h1>Server is already</h1>
-    <pre id="message" ></pre>
+    <div class = "grid-chat">
+        <div class="first-column">
+            <h1>Chatime!</h1>
+        </div>
+        <div class="second-column" id = "chat-frame">
+            
+        </div>
+        
+    </div>
+    
+    
+    
     <input type="text" id="messageContainer"/>
     <button id="sendmsj" title="Send">Send message</button>
+     
+    
     <script>
         (
             function ()  {
 
                 let sendButton = document.querySelector("#sendmsj");
-                let messages = document.querySelector("#message");
+                let messages = document.querySelector("#chat-frame");
                 const messageBox = document.querySelector("#messageContainer");
 
 
                 let ws;
 
                 const showMessage = (msj) => {
-                    messages.textContent += ` \n\n${msj}`;
+                    const para = document.createElement("p")
+                    const node = document.createTextNode(`\n${msj}`)
+                    para.appendChild(node)
+                    document.getElementById("chat-frame")
+                    document.querySelector("#chat-frame").appendChild(para)
+                    para.className = "alert alert-primary"
+                    para.style.borderRadius = "15px"
+                    // para.textContent += `\n${msj}`;
                     messages.scrollTop = messages.scrollHeight;
                     messages.value = "";
                 }

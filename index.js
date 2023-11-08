@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app)
 
 // Declare and initialize the WebSocket instance
-const wss = new WebSocket.Server({server});
+const wss = new WebSocket.Server({server,concurrencyLimit: 10});
 
 wss.on("connection",(ws)=>{
     

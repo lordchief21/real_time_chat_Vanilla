@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+.grid-chat {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: "first-column second-column";
+}
+
+.first-column {
+    grid-area: first-column;
+    background-color: blue;
+}
+
+.second-column {
+    grid-area: second-column;
+    background-color: red;
+}
