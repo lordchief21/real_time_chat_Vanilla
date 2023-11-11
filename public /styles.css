@@ -31,3 +31,9 @@ h1 {
     max-height: 100%;
     background-color: greenyellow; 
 }
+
+.bubble-chat {
+    width: 500px;
+    word-wrap: break-word;
+    height: fit-content;
+}
