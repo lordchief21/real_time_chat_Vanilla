@@ -12,7 +12,9 @@
         <div class="first-column">
             <h1>Chatime!</h1>
         </div>
+        
         <div class="second-column" id = "chat-frame"></div>
+        
         <div class="third-column">
             <input type="text" id="messageContainer"/>
             <button id="sendmsj" title="Send">Send message</button>
@@ -31,22 +33,24 @@
                 let sendButton = document.querySelector("#sendmsj");
                 let messages = document.querySelector("#chat-frame");
                 const messageBox = document.querySelector("#messageContainer");
+                
 
 
                 let ws;
 
-                const showMessage = (msj) => {
+                const showMessage = (msj, nameClass) => {
                     const para = document.createElement("p")
                     const node = document.createTextNode(`\n${msj}`)
                     para.appendChild(node)
                     document.getElementById("chat-frame")
                     document.querySelector("#chat-frame").appendChild(para)
-                    para.className = "alert alert-primary bubble-chat"
+                    para.className = nameClass
                     para.style.borderRadius = "15px"
                     // para.textContent += `\n${msj}`;
                     messages.scrollTop = messages.scrollHeight;
                     messages.value = "";
                 }
+            
 
                 function init(){
                     if(ws) {
@@ -59,9 +63,10 @@
                         console.log('WebSocket Connected')
                     }
 
-                    ws.onmessage = async ({data}) => {
-                        showMessage(data)
-                        console.log(await data.valueOf())
+                    ws.onmessage = ({data}) => {
+                        console.log(data)
+                        showMessage(data, "alert alert-warning bubble-chat_received")
+                        
                     };
 
                     ws.onclose = () => {
@@ -75,7 +80,7 @@
                         }
                         
                         ws.send(messageBox.value);
-                        showMessage(messageBox.value);
+                        showMessage(messageBox.value, "alert alert-primary bubble-chat");
                     }
                 };
 

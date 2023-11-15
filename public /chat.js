@@ -24,6 +24,7 @@ function start()  {
             }
     
             ws.onmessage = ({data}) => {
+                console.log(data)
                 showMessage(data)
             };
 

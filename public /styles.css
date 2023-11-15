@@ -37,3 +37,10 @@ h1 {
     word-wrap: break-word;
     height: fit-content;
 }
+
+.bubble-chat_received {
+    width: 500px;
+    left: 450px;
+    word-wrap: break-word;
+    height: fit-content;
+}
