@@ -34,13 +34,13 @@ h1 {
 
 .bubble-chat {
     margin-bottom: 40px;
-    top: -5px;
+    top: -1em;
+    left: 1em;
     transform: translatey(0px);
     animation: float 5s ease-in-out infinite;
     width: 500px;
     word-wrap: break-word;
     height: fit-content;
-    color: #774f38;
     background-color: #ece5ce;
     border-radius: 11px;
     position: relative;
@@ -60,7 +60,7 @@ h1 {
     display: block;
     bottom: -30px;
     left: 0;
-    box-shadow: 10px 10px #83af9b;
+    box-shadow: 8px 7px rgba(236, 229, 206, .5);
     z-index: -2;
 }
 
@@ -75,7 +75,6 @@ h1 {
     height: fit-content;
     color: black;
     background-color: #53bbe6;
-    
     border-radius: 11px;
     position: relative;
 }
@@ -94,7 +93,7 @@ h1 {
     display: block;
     bottom: -30px;
     right: 0;
-    box-shadow: 10px 10px #83af9b;
+    box-shadow: 8px 7px rgba(131, 175, 155, .5);
     z-index: -2;
 }
 
