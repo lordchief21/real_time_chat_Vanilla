@@ -1,11 +1,33 @@
 const http = require('http')
 const express = require('express')
 const {WebSocket} = require('ws');
+const  bodyParser = require('body-parser')
 
 
 const port = 9000;
 const app = express();
 const server = http.createServer(app)
+let userdata = "";
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'))
+
+
+app.get('/', (req,res) => {
+    res.sendFile(__dirname+"/public/userRegister.html")
+    userdata = req.body
+   
+    
+})
+
+app.post('/', async (req,res) => {
+    userdata = req.body
+    console.log(userdata)
+})
+
+
 
 // Declare and initialize the WebSocket instance
 const wss = new WebSocket.Server({server, perMessageDeflate: {
