@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
 
 
-app.get('/', (req,res) => {
+app.get('/t', (req,res) => {
     res.sendFile(__dirname+"/public/userRegister.html")
     userdata = req.body
    
@@ -25,6 +25,7 @@ app.get('/', (req,res) => {
 app.post('/', async (req,res) => {
     userdata = req.body
     console.log(userdata)
+    res.sendFile(__dirname+"/public/index.html");
 })
 
 
