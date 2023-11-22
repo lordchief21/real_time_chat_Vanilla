@@ -2,7 +2,9 @@ const http = require('http')
 const express = require('express')
 const {WebSocket} = require('ws');
 const  bodyParser = require('body-parser');
-const { constants } = require('fs/promises');
+const {Buffer} = require('node:buffer')
+const path = require('path');
+
 
 
 const port = 9000;
@@ -46,35 +48,31 @@ wss.getUniqueId = () => {
 //Open  WebSocket connection and send or received message from/to client.
 
 wss.on('connection', (ws,req)=>{
-    ws.id = req.headers['sec-websocket-key']
+    // ws.id = req.headers['sec-websocket-key']
     ws.on("message", (msj, isBinary) =>{
         wss.clients.forEach((client) => {
             if ( client != ws && client.readyState == WebSocket.OPEN) {
-                client.send(msj, {binary: isBinary});
-                    console.log(
-                        {   id: client.id,
-                            username: userdata,
-                            content:msj,                        
-                        })
+                msj = msj.toString()
+                const data = {userdata,msj}
+                console.log(data)
+                client.send(JSON.stringify(data), {binary: isBinary});
             }
         })
             
     })
-   
+    
 
     
 })
 
 
-
-
-
-
-
+//Initialize bodyParser  and declare static folder
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname,'/public' )))
+
+//Declare route of Chatime!
 
 
 app.get('/', (req,res) => {
@@ -89,7 +87,8 @@ app.post('/', async (req,res) => {
     
 })
 
-app.get('/chat', (req, res) => {
+app.get('/chat', async (req, res) => {
+    console.log("test",userdata)
     res.sendFile(__dirname+"/public/chat.html")
 })
 
@@ -99,7 +98,7 @@ app.get('/chat', (req, res) => {
 
 
 
-
+//Initialize server
 server.listen(port, ()=> {
     console.log(` WebSocket Server is Opened`)
 })
