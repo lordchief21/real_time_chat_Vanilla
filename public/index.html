@@ -13,8 +13,14 @@
         <h1>User register</h1>
         <form action="/" method="POST">
             <label for="username">Nombre:</label>
-            <input type="text" id = "username" name ="nombre"><br><br>
-            <input type="submit" value="enviar" id='send'/>
+            <input type="text" id ="username" name ="nombre"><br><br>
+            <button  id='send' onclick="getUsername()">Enviar</button>
         </form>
+        <script>
+            function getUsername(){
+                const user = document.getElementById("username").value;
+                localStorage.setItem("username", user)
+            }
+        </script>
     </body>
 </html>

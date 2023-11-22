@@ -23,20 +23,24 @@
 
 
     function init(){
+        
         if(ws) {
             ws.onerror = ws.onopen = ws.onclose = null;
             ws.close();
             console.log("WebSocket Closed")
         }
 
+        console.log("Vengo del index.html",localStorage.getItem("username"))
+
         ws = new WebSocket('ws://localhost:9000');
         ws.onopen = () => {
             console.log('WebSocket Connected')
         }
 
-        ws.onmessage = ({data}) => {
-            console.log(data)
-            showMessage(data, "alert alert-warning bubble-chat_received")
+        ws.onmessage = async ({data}) => {
+            data = JSON.parse(data)
+            console.log(typeof(data), data)
+            showMessage(data.msj, "alert alert-warning bubble-chat_received")
             
         };
 
