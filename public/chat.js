@@ -53,8 +53,8 @@
                 showMessage('An error ocurred with WebSocket')
                 return ;
             }
-            
-            ws.send(messageBox.value);
+            let messa = {user: localStorage.getItem("username"), msj:messageBox.value}
+            ws.send(JSON.stringify(messa));
             showMessage(messageBox.value, "alert alert-primary bubble-chat");
         }
     };
