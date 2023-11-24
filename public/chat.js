@@ -37,7 +37,7 @@
             console.log('WebSocket Connected')
         }
 
-        ws.onmessage = async ({data}) => {
+        ws.onmessage =  async ({data}) => {
             data = JSON.parse(data)
             console.log(typeof(data), data)
             showMessage(data.msj, "alert alert-warning bubble-chat_received")
@@ -53,8 +53,8 @@
                 showMessage('An error ocurred with WebSocket')
                 return ;
             }
-            
-            ws.send(messageBox.value);
+            let messa = {user: localStorage.getItem("username"), msj:messageBox.value}
+            ws.send(JSON.stringify(messa));
             showMessage(messageBox.value, "alert alert-primary bubble-chat");
         }
     };

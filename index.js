@@ -11,7 +11,7 @@ const port = 9000;
 const app = express();
 const server = http.createServer(app);
 
-let userdata = "";
+let userdata = {};
 
 // Declare and initialize the WebSocket instance
 const wss = new WebSocket.Server({server, perMessageDeflate: {
@@ -49,13 +49,16 @@ wss.getUniqueId = () => {
 
 wss.on('connection', (ws,req)=>{
     // ws.id = req.headers['sec-websocket-key']
+    
     ws.on("message", (msj, isBinary) =>{
+        
+        
         wss.clients.forEach((client) => {
             if ( client != ws && client.readyState == WebSocket.OPEN) {
-                msj = msj.toString()
-                const data = {userdata,msj}
-                console.log(data)
-                client.send(JSON.stringify(data), {binary: isBinary});
+                let messa = JSON.parse(msj)
+                // let message = Buffer.from(messa?.data).toJSON()
+                console.log("Este es el formato msj", typeof(messa), messa)
+                client.send(JSON.stringify(messa), {binary: isBinary});
             }
         })
             
