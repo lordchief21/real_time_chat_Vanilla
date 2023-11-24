@@ -51,8 +51,6 @@ wss.on('connection', (ws,req)=>{
     // ws.id = req.headers['sec-websocket-key']
     
     ws.on("message", (msj, isBinary) =>{
-
-        
         
         
         wss.clients.forEach((client) => {
@@ -60,7 +58,7 @@ wss.on('connection', (ws,req)=>{
                 let messa = JSON.parse(msj)
                 // let message = Buffer.from(messa?.data).toJSON()
                 console.log("Este es el formato msj", typeof(messa), messa)
-                client.send(JSON.stringify(msj), {binary: isBinary});
+                client.send(JSON.stringify(messa), {binary: isBinary});
             }
         })
             

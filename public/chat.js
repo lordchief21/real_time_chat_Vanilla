@@ -37,7 +37,7 @@
             console.log('WebSocket Connected')
         }
 
-        ws.onmessage = async ({data}) => {
+        ws.onmessage =  async ({data}) => {
             data = JSON.parse(data)
             console.log(typeof(data), data)
             showMessage(data.msj, "alert alert-warning bubble-chat_received")
