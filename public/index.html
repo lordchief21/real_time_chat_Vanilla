@@ -2,6 +2,7 @@
 
 <html>
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
@@ -10,13 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="index_style.css">
     </head>
-    <body class = "grid text-center">
-        
+    <body class = "">
         <div class="grid-login row">
             <div class="first-column col">
-                <form action="/" method="POST">
-                    <label for="username">Nombre:</label>
-                    <input type="text" id ="username" name ="nombre"><br><br>
+                <form class="login" action="/" method="POST">
+                    <span class="instruction">Enter your username!</span>
+                    <div class="input-container">
+                        <input type="text" id ="username" name ="nombre"><br><br>
+                        <label for="username">Nombre:</label>
+                    </div>
+                    
                     <button  id='send' onclick="getUsername()">Enviar</button>
                 </form>
             </div>
