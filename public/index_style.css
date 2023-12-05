@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,900&display=swap');
 
-* {
-    background-color: white;
+body {
+    background-color: #5ce1e6;
 }
-
 
 .grid-login {
     width: 100% !important;
@@ -25,53 +24,40 @@
     display: flex;
     justify-content: center;
     max-height: 100%;
-    background-color: green;
     
 }
 
 form {
-    overflow: hidden;
-    background-color: white;
-    padding: 40px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, .5);
+    margin: auto;
+    height: 550px;
+    width: 600px;
     border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    transform: (translate(-50%, -50%));
-    transition: transform 300ms, box-shadow 300ms;
-    box-shadow: 5px 10px 10px rgba(rgba(2, 128, 144, 1), 0.2);
 
-    &::before, &::after {
-        content: '';
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        border-top-left-radius: 40%;
-        border-top-right-radius: 45%;
-        border-bottom-left-radius: 35%;
-        border-bottom-right-radius: 40%;
-        z-index: -1;
-    }
 }
 
-.instruction { 
+.instruction {
+    background-color: rgba(255, 255, 255, 0); 
     margin-top: 20px;
     text-align: center;
-    font-size: 25px;
+    font-size: 45px;
     font-family: 'Noto Sans', sans-serif;
 }
 
-.input-container { 
+.input-container {
+    background-color: rgba(255, 255, 255, 0); 
     position:relative;
 	margin-bottom:25px;
 }
 
 .input-container label {
+    background-color: rgba(255, 255, 255, 0);
     position:absolute;
-	top:0px;
-	left:0px;
-	font-size:16px;
+	bottom:100%;
+	font-size:20px;
     margin-left: 10%;
     pointer-events:none;
 	transition: all 0.3s ease-in;
@@ -84,7 +70,8 @@ form {
     margin-left: 10%;
     width:60%;
     padding:8px 0 5px 0;
-    font-size:16px;
+    font-size:25px;
+    align-self: center;
 }
 
 .input-container input:focus{ 
@@ -93,19 +80,81 @@ form {
    border-bottom:1px solid #e74c3c;	
 }
 
-.input-container input:focus ~ label {
-	top:-12px;
-	font-size:12px;
-	
+
+
+
+.button-56 {
+    align-self: center;
+    align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 50%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
-.input-container input:valid ~ label {
-    top: -12px;
-    font-size: 12px;
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
 }
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
 
 /*Second Column and elements of second column*/
 
 .second-column {
-    background-color: yellow;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.logo {
+    width: 1000px;
+    height: 1000px;
+   
 }
