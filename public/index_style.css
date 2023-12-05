@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,900&display=swap');
+
+* {
+    background-color: white;
+}
+
+
+.grid-login {
+    width: 100% !important;
+    height: 100% !important ;
+    padding-left: 0;
+    padding-right: 0;
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(120px auto);
+    grid-template-areas: "first column second-column";
+   
+    
+}
+
+/*First Column and elements of first column*/
+
+.first-column {
+    display: flex;
+    justify-content: center;
+    max-height: 100%;
+    background-color: green;
+    
+}
+
+form {
+    overflow: hidden;
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: (translate(-50%, -50%));
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 5px 10px 10px rgba(rgba(2, 128, 144, 1), 0.2);
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-top-left-radius: 40%;
+        border-top-right-radius: 45%;
+        border-bottom-left-radius: 35%;
+        border-bottom-right-radius: 40%;
+        z-index: -1;
+    }
+}
+
+.instruction { 
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.input-container { 
+    position:relative;
+	margin-bottom:25px;
+}
+
+.input-container label {
+    position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+    margin-left: 10%;
+    pointer-events:none;
+	transition: all 0.3s ease-in;
+}
+
+.input-container input{ 
+    border:0;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    margin-left: 10%;
+    width:60%;
+    padding:8px 0 5px 0;
+    font-size:16px;
+}
+
+.input-container input:focus{ 
+   border:none;	
+   outline:none;
+   border-bottom:1px solid #e74c3c;	
+}
+
+.input-container input:focus ~ label {
+	top:-12px;
+	font-size:12px;
+	
+}
+
+.input-container input:valid ~ label {
+    top: -12px;
+    font-size: 12px;
+}
+
+/*Second Column and elements of second column*/
+
+.second-column {
+    background-color: yellow;
+}
