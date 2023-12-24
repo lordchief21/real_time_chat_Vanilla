@@ -2,20 +2,24 @@ h1 {
     text-align: center;
 }
 
+body {
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    
+}
+
 .grid-chat {
+    margin-top:200px;
+    margin-left: 650px;
+    width: 80%;
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: minmax(1fr,0); 
     gap: 0px 0px; 
     grid-template-areas: 
-    "first-column second-column"
-    "first-column third-column";
-}
-
-.first-column {
-    max-height: 100%;
-    grid-area: first-column;
-    background-color: blue;
+    "second-column"
+    "third-column";
 }
 
 .second-column {

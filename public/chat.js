@@ -8,14 +8,21 @@
 
     let ws;
 
-    const showMessage = (msj, nameClass) => {
+    const showMessage = (msj,user, nameClass) => {
+        const chatBubble = document.createElement("div")
+        const username = document.createElement("p")
+        const username_node = document.createTextNode(`\n${user}`)
         const para = document.createElement("p")
-        const node = document.createTextNode(`\n${msj}`)
+        const node = document.createTextNode(`${msj}`)
+        username.appendChild(username_node)
+        chatBubble.appendChild(username)
         para.appendChild(node)
-        document.getElementById("chat-frame")
-        document.querySelector("#chat-frame").appendChild(para)
-        para.className = nameClass
-        para.style.borderRadius = "15px"
+        chatBubble.appendChild(para)
+        // document.querySelector("#chat-frame").appendChild(username)
+        document.querySelector("#chat-frame").appendChild(chatBubble)
+        // username.className = nameClass
+        chatBubble.className = nameClass
+        chatBubble.style.borderRadius = "15px"
         // para.textContent += `\n${msj}`;
         messages.scrollTop = messages.scrollHeight;
         messages.value = "";
@@ -39,8 +46,8 @@
 
         ws.onmessage =  async ({data}) => {
             data = JSON.parse(data)
-            console.log(typeof(data), data)
-            showMessage(data.msj, "alert alert-warning bubble-chat_received")
+            console.log("2",typeof(data), data)
+            showMessage(data.msj,data.user, "alert alert-warning bubble-chat_received")
             
         };
 
@@ -55,7 +62,7 @@
             }
             let messa = {user: localStorage.getItem("username"), msj:messageBox.value}
             ws.send(JSON.stringify(messa));
-            showMessage(messageBox.value, "alert alert-primary bubble-chat");
+            showMessage(messageBox.value, messa.user ,"alert alert-primary bubble-chat");
         }
     };
 

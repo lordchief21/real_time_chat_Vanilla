@@ -32,24 +32,16 @@ const wss = new WebSocket.Server({server, perMessageDeflate: {
     concurrencyLimit: 10, // Limits zlib concurrency for perf.
     threshold: 1024 // Size (in bytes) below which messages
     // should not be compressed if context takeover is disabled.
-    }
+    }, clientTracking : true
 });
 
-//Declare new function to generate unique ID per user
-
-wss.getUniqueId = () => {
-    const genId = () => {
-        return Math.floor((1+Math.random()) * 0x10000).toString(8).substring(1)
-    }
-    return genId() + genId() - genId()
-}
 
 
 //Open  WebSocket connection and send or received message from/to client.
 
 wss.on('connection', (ws,req)=>{
     // ws.id = req.headers['sec-websocket-key']
-    
+    console.log("test clients: ",wss.clients)
     ws.on("message", (msj, isBinary) =>{
         
         
